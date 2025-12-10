@@ -74,7 +74,9 @@
 </li><li class="u-nav-item"><a class="u-active-palette-4-light-3 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-1-base" href="/dbberg1/BigdataPlatform.html" style="padding: 24px 30px;">BigdataPlatform</a>
 </li><li class="u-nav-item"><a class="u-active-palette-4-light-3 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-1-base" href="/dbberg1/OpensourceDatabase.html" style="padding: 24px 30px;">Opensource Databases</a>
 </li><li class="u-nav-item"><a class="u-active-palette-4-light-3 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-1-base" href="https://news.ycombinator.com/" target="_blank" style="padding: 24px 30px;">Tech News</a>
-</li><li class="u-nav-item"><a class="u-active-palette-4-light-3 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-1-base" href="/dbberg1/Contact.html" style="padding: 24px 41px 24px 30px;">Contact</a>
+</li><li class="u-nav-item"><a class="u-active-palette-4-light-3 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-1-base" href="/dbberg1/Contact.html" style="padding: 24px 30px;">Contact</a>
+</li><!-- Login Button -->
+<li class="u-nav-item"><a class="u-active-palette-4-light-3 u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-1-base" href="#" id="loginBtn" style="padding: 24px 41px 24px 30px;">Login</a>
 </li></ul>
               </div>
               <div class="u-custom-menu u-nav-container-collapse">
@@ -87,6 +89,8 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dbberg1/OpensourceDatabase.html" style="padding: 10px 20px;">Opensource Databases</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="https://news.ycombinator.com/" target="_blank" style="padding: 10px 20px;">Tech News</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dbberg1/Contact.html" style="padding: 10px 20px;">Contact</a>
+</li><!-- Login Button Mobile -->
+<li class="u-nav-item"><a class="u-button-style u-nav-link" href="#" id="loginBtnMobile" style="padding: 10px 20px;">Login</a>
 </li></ul>
                   </div>
                 </div>
@@ -595,4 +599,228 @@
     min-height: 15px;
   }
 }</style></section>
+
+<!-- ==================== LOGIN MODAL START ==================== -->
+<!-- Modal Structure -->
+<div id="loginModal" class="login-modal">
+  <div class="login-modal-content">
+    <!-- Close Button -->
+    <span class="login-modal-close">&times;</span>
+    
+    <!-- Modal Header -->
+    <h2 class="login-modal-title">Login</h2>
+    
+    <!-- Login Form -->
+    <form class="login-form" onsubmit="return false;">
+      <!-- Username Field -->
+      <div class="login-form-group">
+        <label for="username" class="login-label">Username</label>
+        <input type="text" id="username" name="username" class="login-input" placeholder="Enter username" required>
+      </div>
+      
+      <!-- Password Field -->
+      <div class="login-form-group">
+        <label for="password" class="login-label">Password</label>
+        <input type="password" id="password" name="password" class="login-input" placeholder="Enter password" required>
+      </div>
+      
+      <!-- Login Submit Button -->
+      <button type="submit" class="login-submit-btn">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- Login Modal CSS Styles -->
+<style>
+/* Modal Overlay */
+.login-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content Box */
+.login-modal-content {
+  background-color: #ffffff;
+  margin: 5% auto;
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+/* Close Button */
+.login-modal-close {
+  color: #aaa;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.login-modal-close:hover,
+.login-modal-close:focus {
+  color: #000;
+}
+
+/* Modal Title */
+.login-modal-title {
+  margin: 0 0 20px 0;
+  color: #478ac9; /* Using the site's palette-1-base color */
+  font-size: 28px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Form Styling */
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Group */
+.login-form-group {
+  margin-bottom: 20px;
+}
+
+/* Form Label */
+.login-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Form Input */
+.login-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #478ac9; /* Site's palette color */
+  box-shadow: 0 0 5px rgba(71, 138, 201, 0.3);
+}
+
+/* Submit Button */
+.login-submit-btn {
+  background-color: #478ac9; /* Site's palette-1-base color */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.3s;
+}
+
+.login-submit-btn:hover {
+  background-color: #3a6fa3; /* Darker shade on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .login-modal-content {
+    width: 95%;
+    margin: 10% auto;
+    padding: 20px;
+  }
+  
+  .login-modal-title {
+    font-size: 24px;
+  }
+}
+</style>
+
+<!-- Login Modal JavaScript -->
+<script>
+// Get modal elements
+const loginModal = document.getElementById('loginModal');
+const loginBtn = document.getElementById('loginBtn');
+const loginBtnMobile = document.getElementById('loginBtnMobile');
+const closeBtn = document.querySelector('.login-modal-close');
+
+// Function to open the modal
+function openLoginModal(e) {
+  e.preventDefault();
+  loginModal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Function to close the modal
+function closeLoginModal() {
+  loginModal.style.display = 'none';
+  document.body.style.overflow = 'auto'; // Restore background scrolling
+}
+
+// Event listener for desktop login button
+if (loginBtn) {
+  loginBtn.addEventListener('click', openLoginModal);
+}
+
+// Event listener for mobile login button
+if (loginBtnMobile) {
+  loginBtnMobile.addEventListener('click', openLoginModal);
+}
+
+// Event listener for close button
+if (closeBtn) {
+  closeBtn.addEventListener('click', closeLoginModal);
+}
+
+// Close modal when clicking outside the modal content
+window.addEventListener('click', function(event) {
+  if (event.target === loginModal) {
+    closeLoginModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape' && loginModal.style.display === 'block') {
+    closeLoginModal();
+  }
+});
+</script>
+<!-- ==================== LOGIN MODAL END ==================== -->
+
 </body></html>
