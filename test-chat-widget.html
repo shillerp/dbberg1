@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Integration Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Widget Integration Test</h1>
+    
+    <div class="info">
+        <h2>Test Instructions</h2>
+        <ol>
+            <li>Ensure the server is running: <code>cd server && npm run dev</code></li>
+            <li>Look for the chat widget in the bottom-right corner</li>
+            <li>Click the chat button to open the widget</li>
+            <li>Try sending a message</li>
+            <li>Verify the AI responds (requires OPENAI_API_KEY set in .env)</li>
+        </ol>
+    </div>
+
+    <div class="status warning">
+        <strong>Note:</strong> If you see "OpenAI API key is not configured" in the chat, 
+        make sure you've set <code>OPENAI_API_KEY</code> in your <code>.env</code> file.
+    </div>
+
+    <h2>Sample Content</h2>
+    <p>
+        This is a test page to demonstrate the chat widget integration with existing HTML pages.
+        The widget should appear as a floating button in the bottom-right corner of the page.
+    </p>
+
+    <h3>About Databases</h3>
+    <p>
+        Open-source databases have revolutionized how we store and manage data. 
+        Popular options include PostgreSQL, MySQL, MongoDB, and many others.
+    </p>
+
+    <p>
+        You can ask the AI chatbot questions about databases, and it will provide helpful information.
+    </p>
+
+    <!-- Chat Widget Integration -->
+    <link rel="stylesheet" href="client/dist/style.css">
+    <div id="chat-root"></div>
+    <script src="client/dist/chat-widget.umd.cjs"></script>
+</body>
+</html>
